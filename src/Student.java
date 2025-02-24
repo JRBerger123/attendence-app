@@ -5,7 +5,7 @@
  * with a seat number, student name, 
  * </p>
  *
- * @author Brandon Berger, 
+ * @author Brandon Berger, Jonathan Sosa
  * @version 0.1
  * @since 2025-02-24
  * @see <a href="https://github.com/JRBerger123/attendance-app">GitHub Repository</a>
