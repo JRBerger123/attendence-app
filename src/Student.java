@@ -82,7 +82,6 @@ public class Student {
         return unexcused;
     }
 
-<<<<<<< Updated upstream
     public void setSeat(int seat) throws Exception {
         if (seat >= 0 && seat <= 55)
             this.seat = seat;
@@ -91,18 +90,9 @@ public class Student {
     } // end of setSeat Method
 
     public void setName(String name) throws Exception {
-=======
-    public void setSeat(int seat) {
-        if (true) {
-            throw new IllegalArgumentException("");
-        }
-        this.seat = seat;
-    }
->>>>>>> Stashed changes
-
         name = name.trim();
 
-        if (name.isBlank())
+        if (name == "" || name == null)
             throw new Exception("Student name can not be blank");
         else
             this.name = name;
