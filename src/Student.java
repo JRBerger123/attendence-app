@@ -6,7 +6,7 @@
  * </p>
  *
  * @author Brandon Berger, Jonathan Sosa
- * @version 0.1
+ * @version 0.5
  * @since 2025-02-24
  * @see <a href="https://github.com/JRBerger123/attendance-app">GitHub Repository</a>
  * @see <a href="https://github.com/JRBerger123">Brandon Berger's GitHub</a>
@@ -117,8 +117,8 @@ public class Student {
     }
 
     public void displayAttendance() {
-        System.out.print("Seat # " + seat + " " + name);
-        System.out.print(" On Time: " + onTime + " Late: " + late + " Excused: " + excused + " Unexcused: " + unexcused);
+        System.out.println("Seat # " + seat + " " + name);
+        System.out.println("On Time: " + onTime + " Late: " + late + " Excused: " + excused + " Unexcused: " + unexcused);
     }
 
     @Override
