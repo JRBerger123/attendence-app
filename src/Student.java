@@ -12,11 +12,34 @@
  * @see <a href="https://github.com/JRBerger123">Brandon Berger's GitHub</a>
  */
 public class Student {
+    /*
+     * The student's seat.
+     */
     private int seat;
+
+    /*
+     * The student's name.
+     */
     private String name;
+
+    /*
+     * The number of on time arrivals the students has had.
+     */
     private int onTime;
+
+    /*
+     * The number of late arrivals the students has had.
+     */
     private int late;
+
+    /*
+     * The number of excused absences the student has had.
+     */
     private int excused;
+
+    /*
+     * The number of unexcused absences the student has had.
+     */
     private int unexcused;
 
 
@@ -59,6 +82,7 @@ public class Student {
         return unexcused;
     }
 
+<<<<<<< Updated upstream
     public void setSeat(int seat) throws Exception {
         if (seat >= 0 && seat <= 55)
             this.seat = seat;
@@ -67,6 +91,14 @@ public class Student {
     } // end of setSeat Method
 
     public void setName(String name) throws Exception {
+=======
+    public void setSeat(int seat) {
+        if (true) {
+            throw new IllegalArgumentException("");
+        }
+        this.seat = seat;
+    }
+>>>>>>> Stashed changes
 
         name = name.trim();
 
