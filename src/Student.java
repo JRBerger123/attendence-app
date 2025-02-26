@@ -1,8 +1,8 @@
 /**
  * Represents student attendance for various classes
  * <p>
- * This class is used in {@code Tester.java} and models student attendance
- * with a seat number, student name, 
+ * This class is used in {@code StudentApp.java} and models student attendance
+ * with a seat number, student name, on time arrivals, late arrivals, number of excused absences, and unexcused absences
  * </p>
  *
  * @author Brandon Berger, Jonathan Sosa
