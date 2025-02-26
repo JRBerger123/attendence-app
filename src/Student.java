@@ -98,12 +98,27 @@ public class Student {
             this.name = name;
     } // end of setName method
 
-    public void updateAttendance() {
-
+    public void updateAttendance(int status) throws Exception {
+        switch (status) {
+            case 0:
+                onTime++;
+            case 1:
+                late++;
+                break;
+            case 2:
+                excused++;
+                break;
+            case 3:
+                unexcused++;
+                break;
+            default:
+                throw new Exception("Invalid Attendance type: " + status);
+        }
     }
 
     public void displayAttendance() {
-
+        System.out.print("Seat # " + seat + " " + name);
+        System.out.print(" On Time: " + onTime + " Late: " + late + " Excused: " + excused + " Unexcused: " + unexcused);
     }
 
     public boolean equals() {

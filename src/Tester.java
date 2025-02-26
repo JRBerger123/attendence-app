@@ -6,5 +6,6 @@ public class Tester {
         } catch (Exception e) {
             System.out.println((e.getMessage()));
         }
+        System.out.println("Hi");
     }
 }
