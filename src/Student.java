@@ -83,10 +83,10 @@ public class Student {
     }
 
     public void setSeat(int seat) throws Exception {
-        if (seat >= 0 && seat <= 55)
-            this.seat = seat;
-        else
+        if (seat < 1)
             throw new Exception("Seat cannot be a negative");
+        else
+            this.seat = seat;
     } // end of setSeat Method
 
     public void setName(String name) throws Exception {
@@ -113,6 +113,6 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.format("", seat, name);
+        return String.format("%s %s", seat, name);
     }
 }
