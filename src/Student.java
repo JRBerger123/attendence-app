@@ -121,9 +121,15 @@ public class Student {
         System.out.print(" On Time: " + onTime + " Late: " + late + " Excused: " + excused + " Unexcused: " + unexcused);
     }
 
-    public boolean equals() {
+    @Override
+    public boolean equals(Object object) {
 
-        return true;
+        if(!(object instanceof Student))
+            return false;
+
+        Student other = (Student)object;
+
+        return this.seat == other.getSeat();
     }
 
     @Override
