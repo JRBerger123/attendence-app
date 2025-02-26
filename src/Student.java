@@ -59,13 +59,22 @@ public class Student {
         return unexcused;
     }
 
-    public void setSeat() {
+    public void setSeat(int seat) throws Exception {
+        if (seat >= 0 && seat <= 55)
+            this.seat = seat;
+        else
+            throw new Exception("Seat cannot be a negative");
+    } // end of setSeat Method
 
-    }
+    public void setName(String name) throws Exception {
 
-    public void setName() {
+        name = name.trim();
 
-    }
+        if (name.isBlank())
+            throw new Exception("Student name can not be blank");
+        else
+            this.name = name;
+    } // end of setName method
 
     public void updateAttendance() {
 
