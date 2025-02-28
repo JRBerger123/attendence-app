@@ -94,17 +94,17 @@ public class AttendanceApp {
 
     	while (true) {
 			System.out.println();
-			name = Input.getLine("Enter " + teamName + " player's name or 'q' to quit: ");
+			name = Input.getLine("Enter " + courseName + " students's name or 'q' to quit: ");
 			
 			if (name.equals("q"))
 				return;
 			
 			try { 
 				jersey = Input.getIntRange("Enter " + name + "'s jersey number: ", 0, 55);
-				team.addPlayer(name, jersey);
+				course.addStudent(name, jersey);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
-				System.out.println("Unable to add player!");
+				System.out.println("Unable to add student!");
 			}
 			
     	}
@@ -144,10 +144,10 @@ public class AttendanceApp {
     		System.out.println("Main Menu");
     		System.out.println(SINGLE_DASH_LINE);
     		
-    		System.out.println("0 = End Game");
-    		System.out.println("1 = Enter " + homeTeam.getName() + " Team's Stats");
-    		System.out.println("2 = Enter " + awayTeam.getName() + " Team's Stats");
-    		System.out.println("3 = Display Game Stats");
+    		System.out.println("0 = End Attendance App");
+    		System.out.println("1 = Enter " + section1.getName() + " Attendance");
+    		System.out.println("2 = Enter " + section2.getName() + " Attendance");
+    		System.out.println("3 = Display All Attendance Report");
     		
     		System.out.println(SINGLE_DASH_LINE);
     		userInput = Input.getIntRange("Menu Choice: ", 0, 3);
@@ -166,9 +166,9 @@ public class AttendanceApp {
     		case 2:
     			
     			if (userInput == 1)
-    				updateTeamStats(homeTeam);
+    				updateAttendance(section1);
     			else
-    				updateTeamStats(awayTeam);
+    				updateTeamStats(section2);
     			
     			System.out.println();
         		updateScoreboard();
@@ -176,7 +176,7 @@ public class AttendanceApp {
         		break;
         		
     		case 3:
-    			displayGameStatus();
+    			displayDetailReports();
     			break;
     			
     		default:
@@ -194,25 +194,25 @@ public class AttendanceApp {
 	 * <pre>
 	 * Enter Wildcats's Jersey # user input
 	 * </pre>
-	 * @param team The team to update stats for.
+	 * @param course The team to update stats for.
      * @throws Exception getPlayer could throw an invalid jersey error
      */
-    private void updateTeamStats(Team team) throws Exception {
+    private void courseAttendance(Course course) throws Exception {
 
-    	int jersey;
-    	Player player;
+    	int seat;
+    	Student student;
     	
 		while (true) {
-			jersey = Input.getIntRange("Enter " + team.getName() + "'s Jersey # ", 1, 55);
+			seat = Input.getIntRange("Enter " + course.getName() + "'s Jersey # ", 1, 55);
 			
-			player = team.getPlayer(jersey);
+			student = course.getStudent(seat);
 			
-			if (player == null) {
+			if (student == null) {
 				System.out.println("Invalid #, please try again!");
 				continue;
 			}
 			
-			updatePlayerStats(player);
+			studentAttendance(student);
 			
 			break;
 		}
@@ -238,15 +238,15 @@ public class AttendanceApp {
 	 * #10 Billy Fouls=0 Points=2
 	 * -----------------------------------------
      * </pre>
-     * @param player The player to enter stats for
+     * @param student The player to enter attendance for
      */
-    private void updatePlayerStats(Player player) {
+    private void studentAttendance(Student student) {
     	int type;
 
         System.out.println();
 		
 		System.out.println(SINGLE_DASH_LINE);
-		System.out.println("Enter #" + player.getJersey() + " " +player.getName() + " Stats");
+		System.out.println("Enter #" + student.getSeat() + " " +student.getName() + " Attendance");
 		System.out.println(SINGLE_DASH_LINE);
 		
 		System.out.println("0 = foul");
@@ -259,35 +259,24 @@ public class AttendanceApp {
 		System.out.println(SINGLE_DASH_LINE);
 		
 		try {
-			player.updateStats(type);
+			student.updateAttendance(type);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println("Unable to update player's stats!");
 		}
 
-		player.displayStats();
+		student.displayAttendance();
 
     }
-    
-    /**
-     * Display the updated Scoreboard for both teams. Calls the Team's displayTeamStats
-	 * for both the home and away teams.
-     */
-    private void updateScoreboard() {
-    	
-    	homeTeam.displayTeamStats();
-    	awayTeam.displayTeamStats();
-    	
-    }
-    
+
     /**
      * Display all team player's detail stats. call the displayDetailsStats
 	 * for both the home and away teams.
      */
-    private void displayGameStatus() {
+    private void displayDetailReports()  throws Exception{
 
-    	homeTeam.displayDetailStats();
-    	awayTeam.displayDetailStats();
+    	section1.displayDetailReport();
+    	section2.displaySummaryReport();
 
     } // end of playGame
     
@@ -303,13 +292,13 @@ public class AttendanceApp {
      */
 	public static void main(String[] args) {
 
-		BB_Scoreboard scoreboard = new BB_Scoreboard();
+		AttendanceApp object = new AttendanceApp();
 
-		scoreboard.displayAppHeading();
+		object.displayAppHeading();
 		
 		try {
-			scoreboard.setupTeams();
-			scoreboard.mainMenu();
+			object.courseAttendance();
+			object.mainMenu();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println("Sorry but this program ended with an error. Please contact Princess Debbie!");
