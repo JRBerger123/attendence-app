@@ -48,8 +48,9 @@ public class Course {
         name = name.trim(); // remove leading and trailing whitespace
 
         //isBlank checks for both empty or whitespace
-        if (name.isBlank())
+        if (name == null || name == "") {
             throw new RuntimeException("Student name can not be blank.");
+        }
 
         this.name = name;
     }
@@ -127,7 +128,6 @@ public class Course {
      */
     @Override
     public String toString() {
-
         return name;
     }
 }
