@@ -96,7 +96,18 @@ public class Course {
      * Displays the Courses summary stats
      */
     public void displaySummaryReport() {
+        int totalOnTime = allStudents.size();
+        int totalLate = allStudents.size();
+        int totalExcused = allStudents.size();
+        int totalUnexcused = allStudents.size();
 
+        for (Student s : allStudents) {
+            totalOnTime += s.getOnTime();
+            totalLate+= s.getLate();
+            totalExcused= s.getExcused();
+            totalUnexcused= s.getUnexcused();
+        }
+        System.out.println(this.name + ": " + "OnTime= " + totalOnTime + "Late= " + totalLate + "Excused =" + totalExcused + "Unexcused" + totalUnexcused);
     }
 
     /**
