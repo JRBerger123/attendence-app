@@ -1,7 +1,7 @@
 ## Banking App
 
 This app is meant as practice for using classes in Java<br>
-This Java-based Attendance App is a console application that allows users to perform basic Attendence keeping operations. It emphasizes input validation, clean code structure, and error handling. Administrators can add a student, update the student's attendance, and modify courses that the students can attend. The app adheres to object-oriented principles, separating concerns between the UI (Stduent App) and Student logic (Student and Course class).<br>
+This Java-based Attendance App is a console application that allows users to perform basic Attendence keeping operations. It emphasizes input validation, clean code structure, and error handling. Administrators can add a student, update the student's attendance, and modify courses that the students can attend. The app adheres to object-oriented principles, separating concerns between the UI (Attendance App) and Student logic (Student and Course class).<br>
 <br>
 
 ## Table of Contents
