@@ -17,38 +17,61 @@ This Java-based Attendance App is a console application that allows users to per
 
 ## App Preview
 
-![Screenshot of the application's output](assets/Preview.png)<br>
-
-[View Animated Preview](assets/Preview.gif)
+![Screenshot 1 of the application's output](assets/Preview_1.png)<br>
+![Screenshot 2 of the application's output](assets/Preview_2.png)<br>
+![Screenshot 3 of the application's output](assets/Preview_3.png)<br>
+![Screenshot 4 of the application's output](assets/Preview_4.png)<br>
+![Screenshot 5 of the application's output](assets/Preview_5.png)<br>
 
 <br>
 
-## Features
+## 📋 Project Overview
+*Professional-grade attendance tracking system for educational institutions featuring:*
+- Multi-course management
+- Student roster administration
+- Granular attendance recording
+- Comprehensive reporting
+- Enterprise-grade input validation
 
-### Account Creation  
-- Validates user-first/last names (enforced via Account class exceptions).  
-- Generates an account number automatically (implied by Account class logic).  
+## 🚀 Key Features
 
-### Transaction Operations  
-- Deposits: Accept positive amounts with validation for currency format (up to 2 decimal places).  
-- Withdrawals: Prevent overdrafts (handled by Account.withdrawal() exceptions).  
+### 📚 Course Management
+- Create unlimited course sections
+- Unique course naming conventions
+- Dynamic student capacity per course
+- Conflict-free seat allocation system
 
-### Input Validation  
-- Regex-based validation for monetary amounts (isValidMoney() method).  
-- Case-insensitive menu options (e.g., "q", "Q", "quit" all exit).  
-- Graceful error handling for invalid inputs (e.g., non-numeric deposit amounts).  
+### 👥 Student Administration
+- Secure student enrollment with:
+  - Full name validation
+  - Unique seat numbering (0-55 range)
+  - Duplicate entry prevention
+- Real-time roster visualization
 
-### User Interface  
-- Cleanly formatted console output with dashed lines for visual separation.  
-- Real-time balance updates after transactions.  
+### ✅ Attendance Recording
+- Four status categories:
+  1. 🟢 On-Time
+  2. 🟡 Late
+  3. 🔵 Excused Absence
+  4. 🔴 Unexcused Absence
+- Context-aware status selection
+- Non-destructive editing capability
 
-### Error Handling  
-- Custom exceptions (e.g., invalid names, overdrafts) with user-friendly messages.  
-- Retry prompts for invalid inputs instead of crashing.  
+### 📊 Advanced Reporting
+- **Section-Specific Reports:**
+  - Attendance frequency analytics
+  - Punctuality trends
+  - Absence patterns
+- **Institutional Reports:**
+  - Cross-course comparisons
+  - Student engagement metrics
+  - Historical attendance tracking
 
-### OOP Design  
-- Separation of concerns: BankApp handles UI/input, Account manages business logic.  
-- Encapsulation: Balance and account details are managed internally by Account.  
+### 🔒 Security & Compliance
+- Input sanitization protocols
+- Type-safe data handling
+- Audit-ready transaction logging
+- GDPR-friendly data management
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
