@@ -110,39 +110,47 @@ public class AttendanceApp {
     }
     
 	/**
-	 * Take attendance for a specific course.
-	 * @param course The course to take attendance for.
-	 * @return seat Returns the seat
-	 * @throws Exception if the course's attendance setter throws an error back due to invalid user input.
-	 */
-	private int courseAttendance(Course course) {
-		int seat;
-		Student student;
-
-		while (true) {
-			seat = Input.getIntRange("Enter " + course.getName() + "'s Student Seat # or 0 to quit: ", 0, 55);
-
-			student = course.getStudent(seat);
-
-			if (seat == 0) {
-				return 0;
-			}
-
-			if (student == null) {
-				System.out.println("Invalid seat, please try again!");
-				continue;
-			}
-
-			this.studentAttendance(student);
-
-			break;
-		}
-
-		System.out.println();
-		System.out.println(SINGLE_DASH_LINE);
-
-		return seat;
-	}
+ * Processes attendance for a specific course by requesting a valid student seat number.
+ * 
+ * @param course The course for which to process attendance
+ * @return The selected seat number (0 indicates user wants to quit)
+ */
+private int courseAttendance(Course course) {
+    int seat;
+    Student student;
+    
+    System.out.println("Processing attendance for " + course.getName());
+    System.out.println(SINGLE_DASH_LINE);
+    
+    while (true) {
+        try {
+			System.out.println();
+            // Get seat number from user
+            seat = Input.getIntRange("Enter " + course.getName() + "'s Student Seat # or 0 to quit: ", 0, 55);
+            
+            // Check if user wants to quit
+            if (seat == 0) {
+                System.out.println("Returning to main menu...");
+                return 0;
+            }
+            
+            // Validate seat exists in the course
+            student = course.getStudent(seat);
+            if (student == null) {
+                System.out.println("Error: No student assigned to seat #" + seat);
+                System.out.println("Please try again or enter 0 to quit.");
+                continue;
+            }
+            
+            // Return the valid seat number
+            return seat;
+            
+        } catch (Exception e) {
+            System.out.println("Error processing input: " + e.getMessage());
+            System.out.println("Please try again.");
+        }
+    }
+}
 
 	/**
 	 * Take attendance for a specific student.
@@ -257,9 +265,7 @@ public class AttendanceApp {
 				break;
 					
 				case 3:
-					section1.displaySummaryReport();
-					System.out.println();
-					section2.displaySummaryReport();
+					displayDetailReports();
 					break;
 					
 				default:
