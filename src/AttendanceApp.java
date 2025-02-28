@@ -120,9 +120,13 @@ public class AttendanceApp {
 		Student student;
 
 		while (true) {
-			seat = Input.getIntRange("Enter " + course.getName() + "'s Student Seat # or 0 to quit: ", 1, 55);
+			seat = Input.getIntRange("Enter " + course.getName() + "'s Student Seat # or 0 to quit: ", 0, 55);
 
 			student = course.getStudent(seat);
+
+			if (seat == 0) {
+				return 0;
+			}
 
 			if (student == null) {
 				System.out.println("Invalid seat, please try again!");
@@ -235,13 +239,22 @@ public class AttendanceApp {
 					break;
 					
 				case 1:
-					studentAttendance(section1.getStudent(courseAttendance(section1)));
+					userInput = courseAttendance(section1);
+					if (userInput != 0) {
+						studentAttendance(section1.getStudent(userInput));
+						break;
+					}
+					section1.displaySummaryReport();
 					break;
 					
 				case 2:
-					studentAttendance(section2.getStudent(courseAttendance(section2)));
-					System.out.println();
+				userInput = courseAttendance(section2);
+				if (userInput != 0) {
+					studentAttendance(section2.getStudent(userInput));
 					break;
+				}
+				section2.displaySummaryReport();
+				break;
 					
 				case 3:
 					section1.displaySummaryReport();
