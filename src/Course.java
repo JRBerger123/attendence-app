@@ -15,17 +15,6 @@ import java.util.ArrayList;
  */
 public class Course {
     /**
-<<<<<<< Updated upstream
-     * The Courses's name
-     */
-    private String name;
-    /**
-     * The students in the course
-     */
-    private ArrayList<Student> allStudents;
-
-    /**Sets the student's names to "Unknown" and asigns them to a ArrayList*/
-=======
      * Represents the course's name.
      */
     private String name;
@@ -38,37 +27,25 @@ public class Course {
     /**
      * The default constructor sets the course name to unknown and creates an empty allStudents ArrayList.
      */
->>>>>>> Stashed changes
     public Course() {
         name = "unknown";
         allStudents = new ArrayList<>();
     }
-<<<<<<< Updated upstream
     /**
      * Gets the course's name
      * @return The course's name
-=======
-
-    /**
-     * 
->>>>>>> Stashed changes
      */
     public String getName() {
 
         return name;
     }
 
-<<<<<<< Updated upstream
 
 
     /**
      * Set's the course's name
      * @param name the course's name
      * @throws Exception if the course's name is blank <br>
-=======
-    /**
-     * 
->>>>>>> Stashed changes
      */
     public void setName(String name) {
         name = name.trim(); // remove leading and trailing whitespace
@@ -82,16 +59,12 @@ public class Course {
     }
 
     /**
-<<<<<<< Updated upstream
      * Get a Student by using their seat number using the ArrayList method
      * If the indexOf mtehod returns -1 then this method returns empty otherwise,
      * it returns the Student object associated with the seat number
      * @param seat The Student's seat
      * @return If a Student is found, it will return the Student object otherwise a empty value
      * @throws Exception Creating a student with a invalid seat could throw a error
-=======
-     * 
->>>>>>> Stashed changes
      */
     public Student getStudent(int seat) {
         for (Student s : allStudents) {
@@ -103,7 +76,6 @@ public class Course {
     }
 
     /**
-<<<<<<< Updated upstream
      * Add a student to the course, by using the overload constructor that allows setting their name and seat too.
      * This method will verify that the seat is not already used by another student.
      * If it is already in use then it will throw an exception back to the calling method
@@ -112,11 +84,6 @@ public class Course {
      * @throws Exception Student with seat already exists
      */
     public void addStudent(int seat, String name) throws Exception{
-=======
-     * 
-     */
-    public void addStudent(int seat, String name) {
->>>>>>> Stashed changes
         if (getStudent(seat) != null) {
             System.out.println("Student with seat " + seat + " already exists.");
             return;
@@ -126,22 +93,14 @@ public class Course {
     }
 
     /**
-<<<<<<< Updated upstream
      * Displays the Courses summary stats
-=======
-     * 
->>>>>>> Stashed changes
      */
     public void displaySummaryReport() {
 
     }
 
     /**
-<<<<<<< Updated upstream
      * Displays each Student's detailed stats for the entire course
-=======
-     * 
->>>>>>> Stashed changes
      */
     public void displayDetailReport() {
         Student student;
@@ -167,12 +126,8 @@ public class Course {
     }
 
     /**
-<<<<<<< Updated upstream
      * Returns the course's name
      * @return Course Name
-=======
-     * 
->>>>>>> Stashed changes
      */
     @Override
     public String toString() {

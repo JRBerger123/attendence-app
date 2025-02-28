@@ -43,12 +43,8 @@ public class Student {
     private int unexcused;
 
     /**
-<<<<<<< Updated upstream
      * Sets the students fields to default values null and zeros
      * The default constructor is Private, so it can Only be called by overload constructor
-=======
-     * 
->>>>>>> Stashed changes
      */
     private Student() {
         this.name = "";
@@ -60,7 +56,6 @@ public class Student {
     }
 
     /**
-<<<<<<< Updated upstream
      * This overload constructor should only be used in the ArrayList indexOf method
      * to detect if a seat is already taken by overriding the equals method to test
      * if two students are equal based on their seat
@@ -68,18 +63,11 @@ public class Student {
      * @throws Exception if the setSeat method throws a data validation error
      */
     public Student(int seat) throws Exception{
-=======
-     * 
-     * @param seat
-     */
-    public Student(int seat) {
->>>>>>> Stashed changes
         this();
         setSeat(seat);
     }
 
     /**
-<<<<<<< Updated upstream
      * Allows creating of a Student and setting their name and seat number
      * The constructor first calls the default constructor, then
      * calls both the setName and setSeat methods
@@ -88,110 +76,61 @@ public class Student {
      * @throws Exception if the name or seat setters throw a error
      */
     public Student(int seat, String name) throws Exception {
-=======
-     * 
-     * @param seat
-     * @param name
-     */
-    public Student(int seat, String name) {
->>>>>>> Stashed changes
         this();
         setSeat(seat);
         setName(name);
     }
 
     /**
-<<<<<<< Updated upstream
      * Gets the Student's Seat
      * @return The Student's Seat
-=======
-     * 
-     * @return
->>>>>>> Stashed changes
      */
     public int getSeat() {
         return seat;
     }
 
     /**
-<<<<<<< Updated upstream
      * Gets the Student's Name
      * @return The Student's Name
-=======
-     * 
-     * @return
->>>>>>> Stashed changes
      */
     public String getName() {
         return name;
     }
 
     /**
-<<<<<<< Updated upstream
      * Gets the number of OnTime
      * @return The Number of OnTime
-=======
-     * 
-     * @return
->>>>>>> Stashed changes
      */
     public int getOnTime() {
         return onTime;
     }
-<<<<<<< Updated upstream
     /**
      * Gets the number of Late
      * @return The Number of Late
-=======
-
-    /**
-     * 
-     * @return
->>>>>>> Stashed changes
      */
     public int getLate() {
         return late;
     }
-<<<<<<< Updated upstream
     /**
      * Gets the number of Excused
      * @return The Number of Excused
-=======
-
-    /**
-     * 
-     * @return
->>>>>>> Stashed changes
      */
     public int getExcused() {
         return excused;
     }
-<<<<<<< Updated upstream
     /**
      * Gets the number of Unexcused
      * @return The Number of Unexcused
-=======
-
-    /**
-     * 
-     * @return
->>>>>>> Stashed changes
      */
     public int getUnexcused() {
         return unexcused;
     }
 
     /**
-<<<<<<< Updated upstream
      * Sets the Student's Seat number if it's a positive number
      * otherwise it throws a error
      * @param seat the student's seat
      * @throws Exception if the seat isn't a positive
-=======
-     * 
-     * @param seat
-     * @throws Exception
->>>>>>> Stashed changes
      */
     public void setSeat(int seat) throws Exception {
         if (seat < 1)
@@ -201,17 +140,11 @@ public class Student {
     } // end of setSeat Method
 
     /**
-<<<<<<< Updated upstream
      * Set's the student's name. Uses the trim method to remove leading and trailing spaces
      * and then if the name is an empty string, it will throw a error
      * if not then it will set the student's name
      * @param name The Student's Name
      * @throws Exception if the student's name is blank or empty
-=======
-     * 
-     * @param name
-     * @throws Exception
->>>>>>> Stashed changes
      */
     public void setName(String name) throws Exception {
         name = name.trim();
@@ -223,7 +156,6 @@ public class Student {
     } // end of setName method
 
     /**
-<<<<<<< Updated upstream
      * Increments the status type, using a switch
      * case 0 is received then increment onTime
      * case 1 is received then increment Late
@@ -232,11 +164,6 @@ public class Student {
      * default throw an exception displaying the invalid value that was recieved
      * @param status The status type 0=onTime, 1=Late, 2=Excused, 3=Unexcused
      * @throws Exception if an invalid status is received
-=======
-     * 
-     * @param status
-     * @throws Exception
->>>>>>> Stashed changes
      */
     public void updateAttendance(int status) throws Exception {
         switch (status) {
@@ -257,11 +184,7 @@ public class Student {
     }
 
     /**
-<<<<<<< Updated upstream
      * Displays the Student's Attendance, Seat, Name
-=======
-     * 
->>>>>>> Stashed changes
      */
     public void displayAttendance() {
         System.out.println("Seat # " + seat + " " + name);
@@ -269,15 +192,11 @@ public class Student {
     }
 
     /**
-<<<<<<< Updated upstream
      * Instead of verifying two students are identical by equal identities
      * This method will verify two students are the same by only their seat number
      * This allows the ArrayList method to return a player's by only checking their seat number
      * @param object a student's object to check equality of only the seat number
      * @return true if the two student's seat are equal otherwise false
-=======
-     * 
->>>>>>> Stashed changes
      */
     @Override
     public boolean equals(Object object) {
@@ -291,12 +210,8 @@ public class Student {
     }
 
     /**
-<<<<<<< Updated upstream
      * Return's the student seat number and student name
      * @return The student's seat and name
-=======
-     * 
->>>>>>> Stashed changes
      */
     @Override
     public String toString() {

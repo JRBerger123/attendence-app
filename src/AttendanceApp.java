@@ -1,11 +1,8 @@
-import java.util.Scanner;
-import java.util.regex.Pattern;
-
 /**
  * Student and Course Attendance Application
  *
  * @author Brandon Berger
- * @version 0.1
+ * @version 0.3
  * @since 2025.02.26
  * @see <a href="https://github.com/JRBerger123/attendance-app">GitHub Repository</a>
  * @see <a href="https://github.com/JRBerger123">Brandon Berger's GitHub</a>
@@ -32,17 +29,18 @@ public class AttendanceApp {
 	public Course section2;
 
 	/**
-	 * 
+	 * The default constructor that that creates two empty courses to maintain attendance for.
 	 */
 	public AttendanceApp() {
-
+		section1 = new Course();
+		section2 = new Course();
 	}
     
 	/**
      *  Displays the Attendance App header. Example:<br>
 	 *  <pre>
 	 *  =========================================
-	 *  Welcome to the BB Scoreboard App
+	 *  Welcome to the Attendance App
 	 *  =========================================
 	 *  </pre>
      */
@@ -54,32 +52,32 @@ public class AttendanceApp {
 	}
     
     /**
-     * Sets the course names and calls setupStudents to setup each course's students. Example:<br>
+     * Setup courses by getting the course name, plus the student names and seats. Example:<br>
 	 * <pre>
-	 * Enter name for course 1: user input
+	 * Enter Section 1's course name: 
 	 * -----------------------------------------
-	 * Enter name for course 2: user input
+	 * Enter Section 2's course name: 
 	 * </pre>
-	 * @throw Exception if the setters throw an error back due to data validation.
+	 * @throw java.lang.Exception - if the course or student setters throws errors back due to invalid user input.
      */
     private void setupCourses() throws Exception {
-    	String userInput;
-  		
-		userInput = Input.getLine("Enter the name of course 1: ");
-		section1.setName(userInput);
-		setupStudents(section1);
+        String userInput;
+        
+        userInput = Input.getLine("Enter the name of course 1: ");
+        section1.setName(userInput);
+        setupStudents(section1);
 
-		System.out.println();
-		System.out.println(SINGLE_DASH_LINE);
-		System.out.println();
+        System.out.println();
+        System.out.println(SINGLE_DASH_LINE);
+        System.out.println();
 
-		userInput = Input.getLine("Enter the name of course 2: ");
-		section2.setName(userInput);
-		setupStudents(section2);
+        userInput = Input.getLine("Enter the name of course 2: ");
+        section2.setName(userInput);
+        setupStudents(section2);
     }
     
     /**
-     * Sets up the team's players.<br>
+     * Sets up the students for the course.<br>
 	 * Calls Input.getLine to get the player's name<br>
 	 * Calls Input.getIntRange to get the player's jersery between 0 and 55<br>
 	 * Example:<br>
@@ -87,10 +85,10 @@ public class AttendanceApp {
      * Enter Wildcats player's name or 'q' to quit: user input
 	 * Enter Billy's jersey number: user input
 	 * </pre>
-     * @param team The team to setup players for.
+     * @param course The course to set students for.
      */
-    private void setupStudents(Course section) {
-    	String teamName = team.getName();
+    private void setupStudents(Course course) {
+    	String courseName = course.getName();
     	String name;
     	int jersey;
 
@@ -111,7 +109,7 @@ public class AttendanceApp {
 			
     	}
 		    	
-    } // end of setupPlayers
+    } // end of setupStudents
     
     /**
      * Keeps the game running via menu options. Example:<br>
