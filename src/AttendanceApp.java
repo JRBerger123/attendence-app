@@ -58,7 +58,7 @@ public class AttendanceApp {
 	 * -----------------------------------------
 	 * Enter Section 2's course name: 
 	 * </pre>
-	 * @throw java.lang.Exception - if the course or student setters throws errors back due to invalid user input.
+	 * @throws Exception if the course or student setters throws errors back due to invalid user input.
      */
     private void setupCourses() throws Exception {
         String userInput;
@@ -78,20 +78,21 @@ public class AttendanceApp {
     
     /**
      * Sets up the students for the course.<br>
-	 * Calls Input.getLine to get the player's name<br>
-	 * Calls Input.getIntRange to get the player's jersery between 0 and 55<br>
-	 * Example:<br>
-	 * <pre>
-     * Enter Wildcats player's name or 'q' to quit: user input
-	 * Enter Billy's jersey number: user input
-	 * </pre>
+     * Calls getLine to get the student's name<br>
+     * Calls getIntRange to get the student's seat number between 0 and 55<br>
+     * Example:<br>
+     * <pre>
+     * Enter Math101 student's name or 'q' to quit: user input
+     * Enter Billy's seat number: user input
+     * </pre>
      * @param course The course to set students for.
      */
     private void setupStudents(Course course) {
-    	String courseName = course.getName();
-    	String name;
-    	int jersey;
+        String courseName = course.getName();
+        String name;
+        int seatNumber;
 
+<<<<<<< Updated upstream
     	while (true) {
 			System.out.println();
 			name = Input.getLine("Enter " + courseName + " students's name or 'q' to quit: ");
@@ -110,21 +111,40 @@ public class AttendanceApp {
     	}
 		    	
     } // end of setupStudents
+=======
+        while (true) {
+            System.out.println();
+            name = Input.getLine("Enter " + courseName + " student's name or 'q' to quit: ");
+            
+            if (name.equals("q"))
+                return;
+            
+            try { 
+                seatNumber = Input.getIntRange("Enter " + name + "'s seat number: ", 0, 55);
+                course.addStudent(seatNumber, name);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.out.println("Unable to add student!");
+            }
+        }
+    }
+>>>>>>> Stashed changes
     
     /**
-     * Keeps the game running via menu options. Example:<br>
+     * Displays the main menu, get the user input, and call the appropriate method. Example:<br>
 	 * <pre>
 	 * -----------------------------------------
 	 * Main Menu
 	 * -----------------------------------------
-	 * 0 = End Game
-	 * 1 = Enter Wildcats Team's Stats
-	 * 2 = Enter Blue Devils Team's Stats
-	 * 3 = Display Game Stats
+	 * 0 = End Attendance App
+	 * 1 = Take 9:00 am Attendance
+	 * 2 = Take 10:00 am Attendance
+	 * 3 = Display All Attendance Report
 	 * -----------------------------------------
-	 * Menu Choice:
+	 * Menu Choice: 3
+	 * -----------------------------------------
 	 * </pre>
-     * @throws Exception updateTeamStats could throw an error if an invalid option is selected
+     * @throws Exception if any of the menu options throws an error back to this method.
      */
     private void mainMenu() throws Exception {
     	
@@ -187,6 +207,7 @@ public class AttendanceApp {
 
     } // end of playGame
     
+<<<<<<< Updated upstream
     /**
      * Update the select team's stats.<br>
 	 * Calls Input.getIntRange using range from 1 and 55.<br>
@@ -279,19 +300,44 @@ public class AttendanceApp {
     	section2.displaySummaryReport();
 
     } // end of playGame
+=======
+	/**
+	 * Take attendance for a specific course.
+	 * @param course The course to take attendance for.
+	 * @throws Exception if the course's attendance setter throws an error back due to invalid user input.
+	 */
+	private void courseAttendance(Course course) {
+
+	}
+
+	/**
+	 * Take attendance for a specific student.
+	 * @param student The student to take attendance for.
+	 * @throws Exception if the student's attendance setter throws an error back due to invalid user input.
+	 */
+	private void studentAttendance(Student student) {
+
+	}
+    
+    /**
+     * Display the detail attendance report for both course sections.
+     */
+    private void displayDetailReports() {
+    	section1.displayDetailReport();
+    	section2.displayDetailReport();
+
+    }
+>>>>>>> Stashed changes
     
 	/**
-	 * Main method that creates the BB_Stats_App object and then
-	 * setups up the teams and play the game via menu options.
-	 * <br>
-	 * 1) creates a new scoreboard<br>
-	 * 2) calls the displayAppHeading method<br>
-	 * 3) using a try-catch calls setupTeams and mainMenu methods<br>
-	 * <br>
-	 * @param args No command line input args are used for this application
-     */
+	 * Creates the AttendanceApp object, displays the app's heading, and then calls the setup courses
+	 * method that initializes the program with course and student information.
+	 */
 	public static void main(String[] args) {
+		// Create the attendance application instance
+		AttendanceApp attendanceApp = new AttendanceApp();
 
+<<<<<<< Updated upstream
 		AttendanceApp object = new AttendanceApp();
 
 		object.displayAppHeading();
@@ -299,12 +345,21 @@ public class AttendanceApp {
 		try {
 			object.courseAttendance();
 			object.mainMenu();
+=======
+		// Display the application header
+		attendanceApp.displayAppHeading();
+		
+		try {
+			// Setup the courses and students
+			attendanceApp.setupCourses();
+			
+			// If you have a main menu method, uncomment the line below
+			// attendanceApp.mainMenu();
+>>>>>>> Stashed changes
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			System.out.println("Sorry but this program ended with an error. Please contact Princess Debbie!");
+			System.out.println("Sorry but this program ended with an error. Please contact technical support!");
 		}
-		
-		Input.sc.close();
 		
 	} // end of main
 	
