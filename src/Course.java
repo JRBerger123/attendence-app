@@ -93,7 +93,28 @@ public class Course {
     }
 
     /**
-     * Displays the Courses summary stats
+     * Displays a comprehensive summary of attendance statistics for the course.
+     * <p>
+     * This method aggregates attendance data across all students registered in the course
+     * and presents a formatted summary report. The report includes:
+     * <ul>
+     *   <li>Total number of students enrolled in the course</li>
+     *   <li>Cumulative count of on-time attendances</li>
+     *   <li>Cumulative count of late attendances</li>
+     *   <li>Cumulative count of excused absences</li>
+     *   <li>Cumulative count of unexcused absences</li>
+     * </ul>
+     * </p>
+     * <p>
+     * The method iterates through the {@code allStudents} collection, accumulating
+     * attendance metrics from each {@link Student} object using their respective getter
+     * methods. Initial counter values are set to zero to ensure accurate aggregation.
+     * </p>
+     * 
+     * @see Student#getOnTime() Method to retrieve a student's on-time attendance count
+     * @see Student#getLate() Method to retrieve a student's late attendance count
+     * @see Student#getExcused() Method to retrieve a student's excused absence count
+     * @see Student#getUnexcused() Method to retrieve a student's unexcused absence count
      */
     public void displaySummaryReport() {
         // Initialize counters at zero
@@ -131,16 +152,15 @@ public class Course {
         System.out.println("====== =============== ====== ==== ======= =========");
 
         for (Student value : allStudents) {
-
             student = value;
-
-            System.out.printf("%6d %-15s %5d %3d %3d %3d %5d\n",
-                    student.getName(),
-                    student.getOnTime(),
-                    student.getLate(),
-                    student.getExcused(),
-                    student.getUnexcused(),
-                    student.getSeat());
+            
+            System.out.printf("%6d %-15s %6d %4d %7d %9d\n",
+                    student.getSeat(),        // %6d - Seat number (integer)
+                    student.getName(),        // %-15s - Name (left-padded string)
+                    student.getOnTime(),      // %6d - OnTime count
+                    student.getLate(),        // %4d - Late count
+                    student.getExcused(),     // %7d - Excused absences
+                    student.getUnexcused());  // %9d - Unexcused absences
         }
         System.out.println();
     }
