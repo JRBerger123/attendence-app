@@ -109,83 +109,6 @@ public class AttendanceApp {
         }
     }
     
-    /**
-     * Displays the main menu, get the user input, and call the appropriate method. Example:<br>
-	 * <pre>
-	 * -----------------------------------------
-	 * Main Menu
-	 * -----------------------------------------
-	 * 0 = End Attendance App
-	 * 1 = Take 9:00 am Attendance
-	 * 2 = Take 10:00 am Attendance
-	 * 3 = Display All Attendance Report
-	 * -----------------------------------------
-	 * Menu Choice: 3
-	 * -----------------------------------------
-	 * </pre>
-     * @throws Exception if any of the menu options throws an error back to this method.
-     */
-    private void mainMenu() throws Exception {
-    	
-    	boolean playGame = true;
-    	int userInput;
-    	
-    	System.out.println();
-    	System.out.println(DOUBLE_DASH_LINE);    	
-    	System.out.println("Game Started!");
-    	System.out.println(DOUBLE_DASH_LINE);
-    	System.out.println();
-    	
-    	
-    	while (playGame) {
-    		
-    		System.out.println(SINGLE_DASH_LINE);
-    		System.out.println("Main Menu");
-    		System.out.println(SINGLE_DASH_LINE);
-    		
-    		System.out.println("0 = End Game");
-    		System.out.println("1 = Enter " + section1.getName() + " Team's Stats");
-    		System.out.println("2 = Enter " + section2.getName() + " Team's Stats");
-    		System.out.println("3 = Display Game Stats");
-    		
-    		System.out.println(SINGLE_DASH_LINE);
-    		userInput = Input.getIntRange("Menu Choice: ", 0, 3);
-    		System.out.println(SINGLE_DASH_LINE);
-    		
-    		System.out.println();
-    		
-    		switch (userInput) {
-    		case 0:
-    			playGame = false;
-    			updateScoreboard();
-        		System.out.println();
-        		break;
-        		
-    		case 1:
-    		case 2:
-    			
-    			if (userInput == 1)
-    				updateTeamStats(homeTeam);
-    			else
-    				updateTeamStats(awayTeam);
-    			
-    			System.out.println();
-        		updateScoreboard();
-        		System.out.println();
-        		break;
-        		
-    		case 3:
-    			displayGameStatus();
-    			break;
-    			
-    		default:
-    			System.out.println("Invalid menu choice = " + userInput);
-    			
-    		} // end of switch
-    	}
-
-    } // end of playGame
-    
 	/**
 	 * Take attendance for a specific course.
 	 * @param course The course to take attendance for.
@@ -257,6 +180,81 @@ public class AttendanceApp {
     	section1.displayDetailReport();
     	section2.displayDetailReport();
     }
+
+	/**
+     * Displays the main menu, get the user input, and call the appropriate method. Example:<br>
+	 * <pre>
+	 * -----------------------------------------
+	 * Main Menu
+	 * -----------------------------------------
+	 * 0 = End Attendance App
+	 * 1 = Take 9:00 am Attendance
+	 * 2 = Take 10:00 am Attendance
+	 * 3 = Display All Attendance Report
+	 * -----------------------------------------
+	 * Menu Choice: 3
+	 * -----------------------------------------
+	 * </pre>
+     * @throws Exception if any of the menu options throws an error back to this method.
+     */
+    private void mainMenu() throws Exception {
+		boolean runningApp = true;
+		int userInput;
+		
+		System.out.println();
+		System.out.println(DOUBLE_DASH_LINE);    
+		System.out.println("Attendance Tracking Started!");
+		System.out.println(DOUBLE_DASH_LINE);
+		System.out.println();
+		
+		while (runningApp) {
+			// Display menu header
+			System.out.println(SINGLE_DASH_LINE);
+			System.out.println("Main Menu");
+			System.out.println(SINGLE_DASH_LINE);
+			
+			// Display menu options
+			System.out.println("0 = End Attendance App");
+			System.out.println("1 = Take " + section1.getName() + " Attendance");
+			System.out.println("2 = Take " + section2.getName() + " Attendance");
+			System.out.println("3 = Display All Attendance Report");
+			
+			// Get user selection
+			System.out.println(SINGLE_DASH_LINE);
+			userInput = Input.getIntRange("Menu Choice: ", 0, 3);
+			System.out.println(SINGLE_DASH_LINE);
+			
+			System.out.println();
+			
+			// Process user selection
+			switch (userInput) {
+				case 0:
+					runningApp = false;
+					System.out.println("Attendance App terminated. Thank you for using the system.");
+					System.out.println();
+					break;
+					
+				case 1:
+					studentAttendance(section1.getStudent(courseAttendance(section1)));
+					break;
+					
+				case 2:
+					studentAttendance(section2.getStudent(courseAttendance(section2)));
+					System.out.println();
+					break;
+					
+				case 3:
+					section1.displaySummaryReport();
+					System.out.println();
+					section2.displaySummaryReport();
+					break;
+					
+				default:
+					System.out.println("Error: Invalid menu choice = " + userInput);
+					System.out.println("Please select a value between 0 and 3.");
+			} // end of switch
+		}
+	}
     
 	/**
 	 * Creates the AttendanceApp object, displays the app's heading, and then calls the setup courses
@@ -272,9 +270,9 @@ public class AttendanceApp {
 		try {
 			// Setup the courses and students
 			attendanceApp.setupCourses();
-			
-			// If you have a main menu method, uncomment the line below
-			// attendanceApp.mainMenu();
+
+			// Display the main menu
+			attendanceApp.mainMenu();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println("Sorry but this program ended with an error. Please contact technical support!");
