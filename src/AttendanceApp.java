@@ -109,7 +109,79 @@ public class AttendanceApp {
         }
     }
     
+	/**
+	 * Take attendance for a specific course.
+	 * @param course The course to take attendance for.
+	 * @return seat Returns the seat
+	 * @throws Exception if the course's attendance setter throws an error back due to invalid user input.
+	 */
+	private int courseAttendance(Course course) {
+		int seat;
+		Student student;
+
+		while (true) {
+			seat = Input.getIntRange("Enter " + course.getName() + "'s Student Seat # or 0 to quit: ", 1, 55);
+
+			student = course.getStudent(seat);
+
+			if (student == null) {
+				System.out.println("Invalid seat, please try again!");
+				continue;
+			}
+
+			this.studentAttendance(student);
+
+			break;
+		}
+
+		System.out.println();
+		System.out.println(SINGLE_DASH_LINE);
+
+		return seat;
+	}
+
+	/**
+	 * Take attendance for a specific student.
+	 * @param student The student to take attendance for.
+	 * @throws Exception if the student's attendance setter throws an error back due to invalid user input.
+	 */
+	private void studentAttendance(Student student) {
+		int type;
+
+		System.out.println();
+
+		System.out.println(SINGLE_DASH_LINE);
+		System.out.println("Enter #" + student.getSeat() + " " +student.getName() + " Attendance");
+		System.out.println(SINGLE_DASH_LINE);
+
+		System.out.println("0 = On Time");
+		System.out.println("1 = Late");
+		System.out.println("2 = Excused");
+		System.out.println("3 = Unexcused");
+
+		System.out.println(SINGLE_DASH_LINE);
+		type = Input.getIntRange("Enter Status Type: ", 0, 3);
+		System.out.println(SINGLE_DASH_LINE);
+
+		try {
+			student.updateAttendance(type);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Unable to update student's attendance!");
+		}
+
+		student.displayAttendance();
+	}
+    
     /**
+     * Display the detail attendance report for both course sections.
+     */
+    private void displayDetailReports() {
+    	section1.displayDetailReport();
+    	section2.displayDetailReport();
+    }
+
+	/**
      * Displays the main menu, get the user input, and call the appropriate method. Example:<br>
 	 * <pre>
 	 * -----------------------------------------
@@ -167,7 +239,6 @@ public class AttendanceApp {
 					break;
 					
 				case 2:
-					courseAttendance(section2);
 					studentAttendance(section2.getStudent(courseAttendance(section2)));
 					System.out.println();
 					break;
@@ -186,32 +257,6 @@ public class AttendanceApp {
 	}
     
 	/**
-	 * Take attendance for a specific course.
-	 * @param course The course to take attendance for.
-	 * @throws Exception if the course's attendance setter throws an error back due to invalid user input.
-	 */
-	private void courseAttendance(Course course) {
-
-	}
-
-	/**
-	 * Take attendance for a specific student.
-	 * @param student The student to take attendance for.
-	 * @throws Exception if the student's attendance setter throws an error back due to invalid user input.
-	 */
-	private void studentAttendance(Student student) {
-
-	}
-    
-    /**
-     * Display the detail attendance report for both course sections.
-     */
-    private void displayDetailReports() {
-    	section1.displayDetailReport();
-    	section2.displayDetailReport();
-    }
-    
-	/**
 	 * Creates the AttendanceApp object, displays the app's heading, and then calls the setup courses
 	 * method that initializes the program with course and student information.
 	 */
@@ -225,9 +270,9 @@ public class AttendanceApp {
 		try {
 			// Setup the courses and students
 			attendanceApp.setupCourses();
-			
-			// If you have a main menu method, uncomment the line below
-			// attendanceApp.mainMenu();
+
+			// Display the main menu
+			attendanceApp.mainMenu();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println("Sorry but this program ended with an error. Please contact technical support!");
