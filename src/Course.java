@@ -96,18 +96,27 @@ public class Course {
      * Displays the Courses summary stats
      */
     public void displaySummaryReport() {
-        int totalOnTime = allStudents.size();
-        int totalLate = allStudents.size();
-        int totalExcused = allStudents.size();
-        int totalUnexcused = allStudents.size();
-
+        // Initialize counters at zero
+        int totalOnTime = 0;
+        int totalLate = 0;
+        int totalExcused = 0;
+        int totalUnexcused = 0;
+    
+        // Accumulate totals from all students
         for (Student s : allStudents) {
             totalOnTime += s.getOnTime();
-            totalLate+= s.getLate();
-            totalExcused= s.getExcused();
-            totalUnexcused= s.getUnexcused();
+            totalLate += s.getLate();
+            totalExcused += s.getExcused();
+            totalUnexcused += s.getUnexcused();
         }
-        System.out.println(this.name + ": " + "OnTime=" + totalOnTime + " " + "Late=" + totalLate + " " + "Excused=" + totalExcused + " " + "Unexcused=" + totalUnexcused);
+        
+        // Display formatted summary
+        System.out.println(this.name + " Attendance Summary:");
+        System.out.println("Total Students: " + allStudents.size());
+        System.out.println("On Time: " + totalOnTime);
+        System.out.println("Late: " + totalLate);
+        System.out.println("Excused Absences: " + totalExcused);
+        System.out.println("Unexcused Absences: " + totalUnexcused);
     }
 
     /**
