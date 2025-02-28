@@ -169,6 +169,7 @@ public class Student {
         switch (status) {
             case 0:
                 onTime++;
+                break;
             case 1:
                 late++;
                 break;
