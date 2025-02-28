@@ -1,11 +1,12 @@
 /**
- * Student and Course Attendance Application
+ * The Attendance App ONLY keeps track of attendance for two course sections. This is because it's similar to the Basketball scoreboard app that only keeps track of two sections of an Away and Home Team.
  *
- * @author Brandon Berger
- * @version 0.3
+ * @author Brandon Berger, Jonathan Sosa
+ * @version 1.0
  * @since 2025.02.26
  * @see <a href="https://github.com/JRBerger123/attendance-app">GitHub Repository</a>
  * @see <a href="https://github.com/JRBerger123">Brandon Berger's GitHub</a>
+ * @see <a href="https://github.com/jososa02">Jonathan Sosa's GitHub</a>
  */
 public class AttendanceApp {
 	/**

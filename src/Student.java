@@ -6,10 +6,11 @@
  * </p>
  *
  * @author Brandon Berger, Jonathan Sosa
- * @version 0.5
+ * @version 1.0
  * @since 2025-02-24
  * @see <a href="https://github.com/JRBerger123/attendance-app">GitHub Repository</a>
  * @see <a href="https://github.com/JRBerger123">Brandon Berger's GitHub</a>
+ * @see <a href="https://github.com/jososa02">Jonathan Sosa's GitHub</a>
  */
 public class Student {
     /**
