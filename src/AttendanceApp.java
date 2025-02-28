@@ -189,10 +189,32 @@ public class AttendanceApp {
 	/**
 	 * Take attendance for a specific course.
 	 * @param course The course to take attendance for.
+	 * @return seat Returns the seat
 	 * @throws Exception if the course's attendance setter throws an error back due to invalid user input.
 	 */
-	private void courseAttendance(Course course) {
+	private int courseAttendance(Course course) {
+		int seat;
+		Student student;
 
+		while (true) {
+			seat = Input.getIntRange("Enter " + course.getName() + "'s Student Seat # or 0 to quit: ", 1, 55);
+
+			student = course.getStudent(seat);
+
+			if (student == null) {
+				System.out.println("Invalid seat, please try again!");
+				continue;
+			}
+
+			this.studentAttendance(student);
+
+			break;
+		}
+
+		System.out.println();
+		System.out.println(SINGLE_DASH_LINE);
+
+		return seat;
 	}
 
 	/**
@@ -201,7 +223,31 @@ public class AttendanceApp {
 	 * @throws Exception if the student's attendance setter throws an error back due to invalid user input.
 	 */
 	private void studentAttendance(Student student) {
-		
+		int type;
+
+		System.out.println();
+
+		System.out.println(SINGLE_DASH_LINE);
+		System.out.println("Enter #" + student.getSeat() + " " +student.getName() + " Attendance");
+		System.out.println(SINGLE_DASH_LINE);
+
+		System.out.println("0 = On Time");
+		System.out.println("1 = Late");
+		System.out.println("2 = Excused");
+		System.out.println("3 = Unexcused");
+
+		System.out.println(SINGLE_DASH_LINE);
+		type = Input.getIntRange("Enter Status Type: ", 0, 3);
+		System.out.println(SINGLE_DASH_LINE);
+
+		try {
+			student.updateAttendance(type);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Unable to update student's attendance!");
+		}
+
+		student.displayAttendance();
 	}
     
     /**
