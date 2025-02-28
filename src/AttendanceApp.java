@@ -92,26 +92,6 @@ public class AttendanceApp {
         String name;
         int seatNumber;
 
-<<<<<<< Updated upstream
-    	while (true) {
-			System.out.println();
-			name = Input.getLine("Enter " + courseName + " students's name or 'q' to quit: ");
-			
-			if (name.equals("q"))
-				return;
-			
-			try { 
-				jersey = Input.getIntRange("Enter " + name + "'s jersey number: ", 0, 55);
-				course.addStudent(name, jersey);
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-				System.out.println("Unable to add student!");
-			}
-			
-    	}
-		    	
-    } // end of setupStudents
-=======
         while (true) {
             System.out.println();
             name = Input.getLine("Enter " + courseName + " student's name or 'q' to quit: ");
@@ -128,7 +108,6 @@ public class AttendanceApp {
             }
         }
     }
->>>>>>> Stashed changes
     
     /**
      * Displays the main menu, get the user input, and call the appropriate method. Example:<br>
@@ -164,10 +143,10 @@ public class AttendanceApp {
     		System.out.println("Main Menu");
     		System.out.println(SINGLE_DASH_LINE);
     		
-    		System.out.println("0 = End Attendance App");
-    		System.out.println("1 = Enter " + section1.getName() + " Attendance");
-    		System.out.println("2 = Enter " + section2.getName() + " Attendance");
-    		System.out.println("3 = Display All Attendance Report");
+    		System.out.println("0 = End Game");
+    		System.out.println("1 = Enter " + section1.getName() + " Team's Stats");
+    		System.out.println("2 = Enter " + section2.getName() + " Team's Stats");
+    		System.out.println("3 = Display Game Stats");
     		
     		System.out.println(SINGLE_DASH_LINE);
     		userInput = Input.getIntRange("Menu Choice: ", 0, 3);
@@ -186,9 +165,9 @@ public class AttendanceApp {
     		case 2:
     			
     			if (userInput == 1)
-    				updateAttendance(section1);
+    				updateTeamStats(homeTeam);
     			else
-    				updateTeamStats(section2);
+    				updateTeamStats(awayTeam);
     			
     			System.out.println();
         		updateScoreboard();
@@ -196,7 +175,7 @@ public class AttendanceApp {
         		break;
         		
     		case 3:
-    			displayDetailReports();
+    			displayGameStatus();
     			break;
     			
     		default:
@@ -207,100 +186,6 @@ public class AttendanceApp {
 
     } // end of playGame
     
-<<<<<<< Updated upstream
-    /**
-     * Update the select team's stats.<br>
-	 * Calls Input.getIntRange using range from 1 and 55.<br>
-	 * Example: <br>
-	 * <pre>
-	 * Enter Wildcats's Jersey # user input
-	 * </pre>
-	 * @param course The team to update stats for.
-     * @throws Exception getPlayer could throw an invalid jersey error
-     */
-    private void courseAttendance(Course course) throws Exception {
-
-    	int seat;
-    	Student student;
-    	
-		while (true) {
-			seat = Input.getIntRange("Enter " + course.getName() + "'s Jersey # ", 1, 55);
-			
-			student = course.getStudent(seat);
-			
-			if (student == null) {
-				System.out.println("Invalid #, please try again!");
-				continue;
-			}
-			
-			studentAttendance(student);
-			
-			break;
-		}
-			
-		System.out.println();
-		System.out.println(SINGLE_DASH_LINE);
-			
-    } // end of updateTeam
-    
-    /**
-     * Displays the player's name along with the stats menu. Example:
-	 * <pre>
- 	 * -----------------------------------------
-	 * Enter #10 Billy Stats
-	 * -----------------------------------------
-	 * 0 = foul
-	 * 1 = free throw
-	 * 2 = 2pt field goal
-	 * 3 = 3pt field goal
-	 * -----------------------------------------
-	 * Enter Stat Type: 2
-	 * -----------------------------------------
-	 * #10 Billy Fouls=0 Points=2
-	 * -----------------------------------------
-     * </pre>
-     * @param student The player to enter attendance for
-     */
-    private void studentAttendance(Student student) {
-    	int type;
-
-        System.out.println();
-		
-		System.out.println(SINGLE_DASH_LINE);
-		System.out.println("Enter #" + student.getSeat() + " " +student.getName() + " Attendance");
-		System.out.println(SINGLE_DASH_LINE);
-		
-		System.out.println("0 = foul");
-		System.out.println("1 = free throw");
-		System.out.println("2 = 2pt field goal");
-		System.out.println("3 = 3pt field goal");
-		
-		System.out.println(SINGLE_DASH_LINE);
-		type = Input.getIntRange("Enter Stat Type: ", 0, 3);
-		System.out.println(SINGLE_DASH_LINE);
-		
-		try {
-			student.updateAttendance(type);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			System.out.println("Unable to update player's stats!");
-		}
-
-		student.displayAttendance();
-
-    }
-
-    /**
-     * Display all team player's detail stats. call the displayDetailsStats
-	 * for both the home and away teams.
-     */
-    private void displayDetailReports()  throws Exception{
-
-    	section1.displayDetailReport();
-    	section2.displaySummaryReport();
-
-    } // end of playGame
-=======
 	/**
 	 * Take attendance for a specific course.
 	 * @param course The course to take attendance for.
@@ -316,7 +201,7 @@ public class AttendanceApp {
 	 * @throws Exception if the student's attendance setter throws an error back due to invalid user input.
 	 */
 	private void studentAttendance(Student student) {
-
+		
 	}
     
     /**
@@ -325,9 +210,7 @@ public class AttendanceApp {
     private void displayDetailReports() {
     	section1.displayDetailReport();
     	section2.displayDetailReport();
-
     }
->>>>>>> Stashed changes
     
 	/**
 	 * Creates the AttendanceApp object, displays the app's heading, and then calls the setup courses
@@ -337,15 +220,6 @@ public class AttendanceApp {
 		// Create the attendance application instance
 		AttendanceApp attendanceApp = new AttendanceApp();
 
-<<<<<<< Updated upstream
-		AttendanceApp object = new AttendanceApp();
-
-		object.displayAppHeading();
-		
-		try {
-			object.courseAttendance();
-			object.mainMenu();
-=======
 		// Display the application header
 		attendanceApp.displayAppHeading();
 		
@@ -355,7 +229,6 @@ public class AttendanceApp {
 			
 			// If you have a main menu method, uncomment the line below
 			// attendanceApp.mainMenu();
->>>>>>> Stashed changes
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println("Sorry but this program ended with an error. Please contact technical support!");
