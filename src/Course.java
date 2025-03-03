@@ -67,13 +67,14 @@ public class Course {
      * @return If a Student is found, it will return the Student object otherwise a empty value
      * @throws Exception Creating a student with a invalid seat could throw a error
      */
-    public Student getStudent(int seat) {
-        for (Student s : allStudents) {
-            if (s.getSeat() == seat) {
-                return s;
-            }
+    public Student getStudent(int seat) throws Exception {
+        int index = allStudents.indexOf(new Student(seat));
+
+        if (index == -1) {
+            return null;
+        } else {
+            return allStudents.get(index);
         }
-        return null;
     }
 
     /**
